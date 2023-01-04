@@ -38,8 +38,13 @@ installations.each do |installation|
   installation_id = installation.id
   organization = installation.account.login
 
+  puts "Installation ID: #{installation_id}"
+  puts "Organization: " + organization
+
   # Get the installation access token
   token = client.create_app_installation_access_token(installation.id)[:token]
+
+  puts "Access token: " + token
 
   # Use the installation access token to authenticate as an installation
   installation_client = Octokit::Client.new(bearer_token: token)
@@ -48,7 +53,7 @@ installations.each do |installation|
   repositories = installation_client.organization_repositories(organization)
 
   repositories.each do |repo|
-    puts repo.visibility + " - " + repo.full_name
+    puts "Repository: " + repo.full_name + " (" + repo.visibility + ")" 
   end
 
 end
