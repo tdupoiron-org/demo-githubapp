@@ -9,19 +9,51 @@ ruby githubapp.rb
 ```
 
 ```bash
-private - tdupoiron-org/sandbox
-public - tdupoiron-org/.github
-public - tdupoiron-org/sandbox-maven
-public - tdupoiron-org/hello-world-npm
-public - tdupoiron-org/artifacts-manager
-private - tdupoiron-org/sandbox-pages
-private - tdupoiron-org/tdupoiron-org.github.io
-internal - tdupoiron-org/sandbox-pages-public
-private - tdupoiron-org/sandbox-maven-2
-private - tdupoiron-org/sandbox-reactjs
-private - tdupoiron-org/exercise-reference-a-codeql-query
-private - tdupoiron-org/exercise-configure-codeql-language-matrix
-public - tdupoiron-org/bootstrap
-public - tdupoiron-org/sandbox-maven2
-internal - tdupoiron-org/robert-repo
+To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+Installation ID: 32773233
+Organization: tdupoiron-org
+Access token: ghs_F6Bf5ARsDh0sxdibOm7EncrnLOEx9d3BHAvK
+Repository: tdupoiron-org/sandbox (private)
+Repository: tdupoiron-org/.github (public)
+Repository: tdupoiron-org/sandbox-maven (public)
+Repository: tdupoiron-org/hello-world-npm (public)
+Repository: tdupoiron-org/artifacts-manager (public)
+Repository: tdupoiron-org/sandbox-pages (private)
+Repository: tdupoiron-org/tdupoiron-org.github.io (private)
+Repository: tdupoiron-org/sandbox-pages-public (internal)
+Repository: tdupoiron-org/sandbox-maven-2 (private)
+Repository: tdupoiron-org/sandbox-reactjs (private)
+Repository: tdupoiron-org/exercise-reference-a-codeql-query (private)
+Repository: tdupoiron-org/exercise-configure-codeql-language-matrix (private)
+Repository: tdupoiron-org/bootstrap (public)
+Repository: tdupoiron-org/sandbox-maven2 (public)
+Repository: tdupoiron-org/robert-repo (internal)
+```
+
+## Python
+
+```bash
+cd python/
+python githubapp.py
+```
+
+```bash
+Installation ID:  32773233
+Organization:  tdupoiron-org
+Access token:  ghs_vuS9keU4vpt5q09zk0875CdBWR7IQF0GIvEY
+Repository:  tdupoiron-org/sandbox ( private )
+Repository:  tdupoiron-org/.github ( public )
+Repository:  tdupoiron-org/sandbox-maven ( public )
+Repository:  tdupoiron-org/hello-world-npm ( public )
+Repository:  tdupoiron-org/artifacts-manager ( public )
+Repository:  tdupoiron-org/sandbox-pages ( private )
+Repository:  tdupoiron-org/tdupoiron-org.github.io ( private )
+Repository:  tdupoiron-org/sandbox-pages-public ( internal )
+Repository:  tdupoiron-org/sandbox-maven-2 ( private )
+Repository:  tdupoiron-org/sandbox-reactjs ( private )
+Repository:  tdupoiron-org/exercise-reference-a-codeql-query ( private )
+Repository:  tdupoiron-org/exercise-configure-codeql-language-matrix ( private )
+Repository:  tdupoiron-org/bootstrap ( public )
+Repository:  tdupoiron-org/sandbox-maven2 ( public )
+Repository:  tdupoiron-org/robert-repo ( internal )
 ```
