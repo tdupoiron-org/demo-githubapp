@@ -8,7 +8,7 @@ private_pem = ENV["DEMO_GITHUBAPP_PRIVATE_KEY"]
 private_key = OpenSSL::PKey::RSA.new(private_pem)
 
 # Generate the JWT
-appid = ENV["DEMO_GITHUBAPP_APPID"]
+appId = ENV["DEMO_GITHUBAPP_APPID"]
 
 payload = {
   # issued at time, 60 seconds in the past to allow for clock drift
@@ -16,7 +16,7 @@ payload = {
   # JWT expiration time (10 minute maximum)
   exp: Time.now.to_i + (10 * 60),
   # GitHub App's identifier
-  iss: appid
+  iss: appId
 }
 
 jwt = JWT.encode(payload, private_key, "RS256")

@@ -6,7 +6,7 @@ import sys
 import os
 
 signing_key = os.environ["DEMO_GITHUBAPP_PRIVATE_KEY"]
-appid = os.environ["DEMO_GITHUBAPP_APPID"]
+appId = os.environ["DEMO_GITHUBAPP_APPID"]
 
 payload = {
     # Issued at time
@@ -14,7 +14,7 @@ payload = {
     # JWT expiration time (10 minutes maximum)
     'exp': int(time.time()) + 600, 
     # GitHub App's identifier
-    'iss': appid
+    'iss': appId
 }
     
 # Create JWT
