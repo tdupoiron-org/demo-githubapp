@@ -23,6 +23,7 @@
 		"pip3 install PyJWT",
 		"cd javascript && npm install",
 		"cd java/githubapp && mvn dependency:resolve",
+	]
 
 	// Configure tool-specific properties.
 	// "customizations": {},
