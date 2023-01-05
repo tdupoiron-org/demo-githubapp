@@ -19,10 +19,10 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": [
-		"gem install jwt && gem install octokit",
-		"pip3 install PyJWT",
-		"cd javascript && npm install",
-		"cd ../java/githubapp && mvn dependency:resolve",
+		"cd $CODESPACE_VSCODE_FOLDER && $MY_RUBY_HOME/bin/gem install jwt && $MY_RUBY_HOME/bin/gem install octokit",
+		"cd $CODESPACE_VSCODE_FOLDER && $PYTHON_PATH/bin/pip3 install PyJWT",
+		"cd $CODESPACE_VSCODE_FOLDER/javascript && $NVM_BIN/npm install",
+		"cd $CODESPACE_VSCODE_FOLDER/java/githubapp && $MAVEN_HOME/bin/mvn dependency:resolve"
 	]
 
 	// Configure tool-specific properties.
