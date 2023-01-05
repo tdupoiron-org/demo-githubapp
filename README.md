@@ -88,3 +88,44 @@ Repository: tdupoiron-org/bootstrap (public)
 Repository: tdupoiron-org/sandbox-maven2 (public)
 Repository: tdupoiron-org/robert-repo (internal)
 ```
+
+## Java
+Using 3rd party library [github-api](https://mvnrepository.com/artifact/org.kohsuke/github-api/1.313)
+
+```bash
+cd java/githubapp/
+mvn clean install
+mvn -Dexec.mainClass=com.github.demo.App exec:java
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.github.demo:githubapp >----------------------
+[INFO] Building githubapp 1.0.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ githubapp ---
+Installation ID: 32773233
+Organization: tdupoiron-org
+Access token: ghs_MESpA9sKntHvRyQ1KDRdKUxqNUul6E1X7OWb
+Repository: sandbox (private)
+Repository: .github (public)
+Repository: sandbox-maven (public)
+Repository: hello-world-npm (public)
+Repository: artifacts-manager (public)
+Repository: sandbox-pages (private)
+Repository: tdupoiron-org.github.io (private)
+Repository: sandbox-pages-public (internal)
+Repository: sandbox-maven-2 (private)
+Repository: sandbox-reactjs (private)
+Repository: exercise-reference-a-codeql-query (private)
+Repository: exercise-configure-codeql-language-matrix (private)
+Repository: bootstrap (public)
+Repository: sandbox-maven2 (public)
+Repository: robert-repo (internal)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.964 s
+[INFO] Finished at: 2023-01-05T09:37:06Z
+[INFO] ------------------------------------------------------------------------
+```
