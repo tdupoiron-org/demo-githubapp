@@ -32,6 +32,7 @@ Repository: tdupoiron-org/robert-repo (internal)
 ```
 
 ## Python
+[GitHub Rest API](https://docs.github.com/en/rest)
 
 ```bash
 cd python/
