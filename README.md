@@ -5,6 +5,9 @@
 [Octokit Ruby](https://octokit.github.io/octokit.rb/Octokit/Client.html)
 
 ```bash
+cd $CODESPACE_VSCODE_FOLDER
+gem install jwt
+gem install octokit
 cd ruby/
 ruby githubapp.rb
 ```
@@ -35,6 +38,9 @@ Repository: tdupoiron-org/robert-repo (internal)
 [GitHub Rest API](https://docs.github.com/en/rest)
 
 ```bash
+cd $CODESPACE_VSCODE_FOLDER
+pip3 install PyJWT
+pip3 install cryptography
 cd python/
 python githubapp.py
 ```
@@ -64,7 +70,8 @@ Repository:  tdupoiron-org/robert-repo ( internal )
 [Octokit Javascript](https://octokit.github.io/rest.js/v19)
 
 ```bash
-cd javascript/
+cd $CODESPACE_VSCODE_FOLDER/javascript
+npm install
 node githubapp.js
 ```
 
@@ -93,8 +100,8 @@ Repository: tdupoiron-org/robert-repo (internal)
 Using 3rd party library [github-api](https://mvnrepository.com/artifact/org.kohsuke/github-api/1.313)
 
 ```bash
-cd java/githubapp/
-mvn dependency:resolve
+cd $CODESPACE_VSCODE_FOLDER/java/githubapp
+mvn package
 mvn -Dexec.mainClass=com.github.demo.App exec:java
 
 [INFO] Scanning for projects...
