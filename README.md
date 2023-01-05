@@ -94,7 +94,7 @@ Using 3rd party library [github-api](https://mvnrepository.com/artifact/org.kohs
 
 ```bash
 cd java/githubapp/
-mvn clean install
+mvn dependency:resolve
 mvn -Dexec.mainClass=com.github.demo.App exec:java
 
 [INFO] Scanning for projects...

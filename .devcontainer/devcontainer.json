@@ -18,7 +18,11 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "gem install jwt && gem install octokit"
+	"postCreateCommand": [
+		"gem install jwt && gem install octokit",
+		"pip3 install PyJWT",
+		"cd javascript && npm install",
+		"cd java/githubapp && mvn dependency:resolve",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
