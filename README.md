@@ -16,7 +16,7 @@ ruby githubapp.rb
 To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
 Installation ID: 32773233
 Organization: tdupoiron-org
-Access token: ghs_F6Bf5ARsDh0sxdibOm7EncrnLOEx9d3BHAvK
+Access token: ghs_F6Bf5ARsDh0sxdibOm7EncrnLOEx9d3BHA
 Repository: tdupoiron-org/sandbox (private)
 Repository: tdupoiron-org/.github (public)
 Repository: tdupoiron-org/sandbox-maven (public)
@@ -48,7 +48,7 @@ python githubapp.py
 ```bash
 Installation ID:  32773233
 Organization:  tdupoiron-org
-Access token:  ghs_vuS9keU4vpt5q09zk0875CdBWR7IQF0GIvEY
+Access token:  ghs_vuS9keU4vpt5q09zk0875CdBWR7IQF0GIv
 Repository:  tdupoiron-org/sandbox ( private )
 Repository:  tdupoiron-org/.github ( public )
 Repository:  tdupoiron-org/sandbox-maven ( public )
@@ -78,7 +78,7 @@ node githubapp.js
 ```bash
 Installation ID: 32773233
 Organization: tdupoiron-org
-Access token: ghs_Z8hv3yxqdTUU51BkIK3mmwsmZ4B9Pe4ZKbgr
+Access token: ghs_Z8hv3yxqdTUU51BkIK3mmwsmZ4B9Pe4ZKb
 Repository: tdupoiron-org/sandbox (private)
 Repository: tdupoiron-org/.github (public)
 Repository: tdupoiron-org/sandbox-maven (public)
@@ -113,7 +113,7 @@ mvn -Dexec.mainClass=com.github.demo.App exec:java
 [INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ githubapp ---
 Installation ID: 32773233
 Organization: tdupoiron-org
-Access token: ghs_MESpA9sKntHvRyQ1KDRdKUxqNUul6E1X7OWb
+Access token: ghs_MESpA9sKntHvRyQ1KDRdKUxqNUul6E1X7O
 Repository: sandbox (private)
 Repository: .github (public)
 Repository: sandbox-maven (public)
