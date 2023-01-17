@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@octokit/auth-app": "^4.0.7",
+    "@octokit/auth-app": "^4.0.8",
     "@octokit/rest": "^19.0.5"
   }
 }
