@@ -97,12 +97,50 @@ Repository: tdupoiron-org/robert-repo (internal)
 ```
 
 ## Java
+[GitHub Rest API](https://docs.github.com/en/rest)
+
+```bash
+cd $CODESPACE_VSCODE_FOLDER/java/githubapp
+mvn package
+mvn -Dexec.mainClass=com.github.demo.GitHubAppHttp exec:java
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.github.demo:githubapp >----------------------
+[INFO] Building githubapp 1.0.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:java (default-cli) @ githubapp ---
+Installation ID: 32435211
+Organization: tdupoiron-org
+Repository: sandbox (private)
+Repository: .github (public)
+Repository: sandbox-maven (public)
+Repository: hello-world-npm (public)
+Repository: artifacts-manager (public)
+Repository: sandbox-pages (private)
+Repository: tdupoiron-org.github.io (private)
+Repository: sandbox-pages-public (internal)
+Repository: sandbox-reactjs (private)
+Repository: bootstrap (public)
+Repository: demo-githubapp (public)
+Repository: github-packages-demo (private)
+Repository: upload-artifact (public)
+Repository: demo-repository (private)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.582 s
+[INFO] Finished at: 2023-01-23T21:05:43Z
+[INFO] ------------------------------------------------------------------------
+```
+
 Using 3rd party library [github-api](https://mvnrepository.com/artifact/org.kohsuke/github-api/1.313)
 
 ```bash
 cd $CODESPACE_VSCODE_FOLDER/java/githubapp
 mvn package
-mvn -Dexec.mainClass=com.github.demo.App exec:java
+mvn -Dexec.mainClass=com.github.demo.GitHubAppKohsuke exec:java
 
 [INFO] Scanning for projects...
 [INFO] 

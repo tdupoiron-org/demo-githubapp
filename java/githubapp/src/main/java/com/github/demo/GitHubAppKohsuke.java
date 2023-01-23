@@ -22,7 +22,7 @@ import org.kohsuke.github.GitHubBuilder;
 
 import io.jsonwebtoken.Jwts;
 
-public class App 
+public class GitHubAppKohsuke 
 {
     public static void main( String[] args ) throws NoSuchAlgorithmException, InvalidKeySpecException, IOException
     {
