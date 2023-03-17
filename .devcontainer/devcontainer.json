@@ -6,7 +6,8 @@
 			"extensions": [
 				"GitHub.copilot",
 				"shd101wyy.markdown-preview-enhanced",
-				"vscjava.vscode-java-pack"
+				"vscjava.vscode-java-pack",
+				"ms-python.python"
 			]
 		}
 	},
