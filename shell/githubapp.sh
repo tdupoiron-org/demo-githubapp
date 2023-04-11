@@ -15,8 +15,6 @@ HEADER_PAYLOAD="${HEADER}"."${PAYLOAD}"
 SIGNATURE=$( openssl dgst -sha256 -sign <(echo -n "${GITHUB_PRIVATE_KEY}") <(echo -n "${HEADER_PAYLOAD}") | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
 JWT="${HEADER_PAYLOAD}"."${SIGNATURE}"
 
-echo $JWT
-
 # Get the list of installations and iterate through them
 installations_json=$(curl -sL \
   -H "Accept: application/vnd.github+json" \
@@ -34,9 +32,8 @@ for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
     # Get the account name
     account_name=$(echo $installation | base64 --decode | jq -r '.account.login')
 
-    echo $account_type
-    echo $account_name
-    echo $installation_id
+    echo "Installation ID: $installation_id"
+    echo "$account_type: $account_name"
 
     # Get the access token for the installation
     token_json=$(curl -sL \
@@ -48,7 +45,7 @@ for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
     # Get the token
     token=$(echo $token_json | jq -r '.token')
 
-    echo $token
+    echo "Access token: $token"
 
     # Get the list of repositories for the installation and iterate through them
     repos_json=$(curl -sL \
@@ -60,12 +57,12 @@ for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
     for repo in $(echo $repos_json | jq -r '.[] | @base64'); do
 
         # Get the repo name
-        repo_name=$(echo $repo | base64 --decode | jq -r '.name')
+        repo_full_name=$(echo $repo | base64 --decode | jq -r '.full_name')
 
         # Get the repo visibility
         repo_visibility=$(echo $repo | base64 --decode | jq -r '.visibility')
 
-        echo "$repo_name ($repo_visibility)"
+        echo "Repository: $repo_full_name ( $repo_visibility )"
 
     done
 
