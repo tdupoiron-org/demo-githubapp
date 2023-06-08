@@ -33,10 +33,12 @@ jobs:
     - name: Generate Token
       id: generate_token
       run: |
+        cd ${{ env.APP_DIR }}
         python3 githubapp_generate_token.py
         
     - name: Create repository
       env:
         DEMO_GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       run: |
+        cd ${{ env.APP_DIR }}
         python3 create_repo.py
