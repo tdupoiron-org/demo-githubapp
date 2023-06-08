@@ -1,0 +1,38 @@
+name: Python Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name:
+        type: text
+        required: true
+        description: Repository to create
+
+env:
+  app_dir: python/demo1_create_repo
+
+jobs:
+  create-repo:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    - name: Install dependencies
+      run: |
+        cd $APP_DIR
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Generate Token
+      run: |
+        python3 githubapp_generate_token.py
+        
+    - name: Create repository
+      run: |
+        python3 create_repo.py
