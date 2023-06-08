@@ -10,11 +10,6 @@ on:
 
 env:
   APP_DIR: python/demo1_create_repo
-  DEMO_GITHUBAPP_PRIVATE_KEY: ${{ secrets.DEMO_GITHUBAPP_PRIVATE_KEY }}
-  DEMO_GITHUBAPP_APPID: ${{ secrets.DEMO_GITHUBAPP_APPID }}
-  DEMO_GITHUBAPP_INSTALLATIONID: ${{ secrets.DEMO_GITHUBAPP_INSTALLATIONID }}
-  DEMO_GITHUB_REPO_NAME: ${{ github.event.inputs.repo_name }}
-  DEMO_GITHUB_REPO_OWNER: ${{ github.event.repository.owner.login }}
 
 jobs:
   create-repo:
@@ -37,6 +32,10 @@ jobs:
 
     - name: Generate Token
       id: generate_token
+      env:
+        DEMO_GITHUBAPP_PRIVATE_KEY: ${{ secrets.DEMO_GITHUBAPP_PRIVATE_KEY }}
+        DEMO_GITHUBAPP_APPID: ${{ secrets.DEMO_GITHUBAPP_APPID }}
+        DEMO_GITHUBAPP_INSTALLATIONID: ${{ secrets.DEMO_GITHUBAPP_INSTALLATIONID }}
       run: |
         cd ${{ env.APP_DIR }}
         python3 githubapp_generate_token.py
@@ -44,6 +43,8 @@ jobs:
     - name: Create repository
       env:
         DEMO_GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        DEMO_GITHUB_REPO_NAME: ${{ github.event.inputs.repo_name }}
+        DEMO_GITHUB_REPO_OWNER: ${{ github.event.repository.owner.login }}
       run: |
         cd ${{ env.APP_DIR }}
         python3 create_repo.py
