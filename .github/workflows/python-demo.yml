@@ -27,7 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         cd ${{ env.APP_DIR }}
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -m pip3 install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Generate Token
       id: generate_token
