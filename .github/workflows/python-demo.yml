@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       repo_name:
-        type: text
+        type: string
         required: true
         description: Repository to create
 
 env:
-  app_dir: python/demo1_create_repo
+  APP_DIR: python/demo1_create_repo
 
 jobs:
   create-repo:
@@ -26,13 +26,16 @@ jobs:
         
     - name: Install dependencies
       run: |
-        cd $APP_DIR
+        cd ${{ env.APP_DIR }}
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Generate Token
+      id: generate_token
       run: |
         python3 githubapp_generate_token.py
         
     - name: Create repository
+      env:
+        DEMO_GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       run: |
         python3 create_repo.py

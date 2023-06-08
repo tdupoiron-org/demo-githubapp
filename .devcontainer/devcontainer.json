@@ -7,7 +7,8 @@
 				"GitHub.copilot",
 				"shd101wyy.markdown-preview-enhanced",
 				"vscjava.vscode-java-pack",
-				"ms-python.python"
+				"ms-python.python",
+				"github.vscode-github-actions"
 			]
 		}
 	},
