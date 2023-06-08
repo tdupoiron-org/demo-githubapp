@@ -10,6 +10,9 @@ on:
 
 env:
   APP_DIR: python/demo1_create_repo
+  DEMO_GITHUBAPP_PRIVATE_KEY: ${{ secrets.DEMO_GITHUBAPP_PRIVATE_KEY }}
+  DEMO_GITHUBAPP_APPID: ${{ secrets.DEMO_GITHUBAPP_APPID }}
+  DEMO_GITHUBAPP_INSTALLATIONID: ${{ secrets.DEMO_GITHUBAPP_INSTALLATIONID }}
 
 jobs:
   create-repo:
