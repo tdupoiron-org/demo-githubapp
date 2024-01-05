@@ -8,7 +8,8 @@
 				"shd101wyy.markdown-preview-enhanced",
 				"vscjava.vscode-java-pack",
 				"ms-python.python",
-				"github.vscode-github-actions"
+				"github.vscode-github-actions",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	},
