@@ -1,24 +1,36 @@
 #!/bin/bash
 
+# Set the environment variables
 APP_KEY=$APP_SCANREPOS_PRIVATEKEY
 APP_ID=$APP_SCANREPOS_APPID
 
-NOW=$( date +%s )
-IAT="${NOW}"
-EXP=$((${NOW} + 600))
-HEADER_RAW='{"alg":"RS256"}'
-HEADER=$( echo -n "${HEADER_RAW}" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
-PAYLOAD_RAW='{"iat":'"${IAT}"',"exp":'"${EXP}"',"iss":'"${APP_ID}"'}'
-PAYLOAD=$( echo -n "${PAYLOAD_RAW}" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
-HEADER_PAYLOAD="${HEADER}"."${PAYLOAD}"
+# Function to generate JWT
+generate_jwt() {
+  local app_id=$1
+  local app_key=$2
 
-SIGNATURE=$( openssl dgst -sha256 -sign <(echo -n "${APP_KEY}") <(echo -n "${HEADER_PAYLOAD}") | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
-JWT="${HEADER_PAYLOAD}"."${SIGNATURE}"
+  local NOW=$( date +%s )
+  local IAT="${NOW}"
+  local EXP=$((${NOW} + 600))
+  local HEADER_RAW='{"alg":"RS256"}'
+  local HEADER=$( echo -n "${HEADER_RAW}" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
+  local PAYLOAD_RAW='{"iat":'"${IAT}"',"exp":'"${EXP}"',"iss":'"${APP_ID}"'}'
+  local PAYLOAD=$( echo -n "${PAYLOAD_RAW}" | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
+  local HEADER_PAYLOAD="${HEADER}"."${PAYLOAD}"
+
+  local SIGNATURE=$( openssl dgst -sha256 -sign <(echo -n "${APP_KEY}") <(echo -n "${HEADER_PAYLOAD}") | openssl base64 | tr -d '=' | tr '/+' '_-' | tr -d '\n' )
+  local JWT="${HEADER_PAYLOAD}"."${SIGNATURE}"
+
+  echo $JWT
+}
+
+# Generate the JWT
+jwt=$(generate_jwt "$APP_ID" "$APP_KEY")
 
 # Get the list of installations and iterate through them
 installations_json=$(curl -sL \
   -H "Accept: application/vnd.github+json" \
-  -H "Authorization: Bearer $JWT" \
+  -H "Authorization: Bearer $jwt" \
   https://api.github.com/app/installations)
 
 for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
@@ -39,7 +51,7 @@ for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
     token_json=$(curl -sL \
         -X POST \
         -H "Accept: application/vnd.github+json" \
-        -H "Authorization: Bearer $JWT" \
+        -H "Authorization: Bearer $jwt" \
         https://api.github.com/app/installations/$installation_id/access_tokens)
 
     # Get the token
@@ -100,6 +112,18 @@ for installation in $(echo $installations_json | jq -r '.[] | @base64'); do
         repo_visibility=$(echo $repo | base64 --decode | jq -r '.visibility')
 
         echo "Repository: $repo_full_name ( $repo_visibility )"
+        
+        # Check if the repository already exists
+        if [ -d "repos/$repo_full_name" ]; then
+          # Repository exists, perform a fetch/pull
+          cd "repos/$repo_full_name"
+          git pull origin
+          cd -
+        else
+          # Repository doesn't exist, clone it
+          export GITHUB_TOKEN=$token
+          gh repo clone "$repo_full_name" "repos/$repo_full_name" > /dev/null 2>&1
+        fi
 
     done
 
