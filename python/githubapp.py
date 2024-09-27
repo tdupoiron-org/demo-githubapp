@@ -25,6 +25,18 @@ encoded_jwt = jwt.encode(payload, signing_key, algorithm='RS256')
 import requests
 import json
 
+# Get the authenticated app
+url = "https://api.github.com/app"
+headers = {
+    "Authorization": "Bearer " + encoded_jwt
+}
+
+response = requests.get(url, headers=headers)
+app = json.loads(response.text)
+
+# display in console the app full raw
+print("App: ", app)
+
 # Get the app installations
 url = "https://api.github.com/app/installations"
 headers = {
@@ -36,6 +48,9 @@ installations = json.loads(response.text)
 ### STEP 3 : For each installation, get the installation access token and list organization repositories
 
 for installation in installations:
+
+    # display in console the installation full raw
+    print("Installation: ", installation)
 
     installation_id = installation["id"]
     organization = installation["account"]["login"]
