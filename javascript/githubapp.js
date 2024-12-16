@@ -1,6 +1,7 @@
+(async () => {
 // STEP 1 : Generate a JWT
-const { Octokit } = require("@octokit/rest");
-const { createAppAuth } = require("@octokit/auth-app");
+const { createAppAuth } = await import("@octokit/auth-app");
+const { Octokit } = await import("@octokit/rest");   
 
 signing_key = process.env.DEMO_GITHUBAPP_PRIVATE_KEY;
 appId = process.env.DEMO_GITHUBAPP_APPID;
@@ -48,6 +49,7 @@ async function createInstallationAccessToken(installationId) {
     return octokit.apps.createInstallationAccessToken({
         installation_id: installationId
     }).then((response) => {
+        console.log(response.data);
         return response.data.token;
     });
 
@@ -112,3 +114,9 @@ async function main() {
 }
 
 main(); 
+
+})().catch((error) => {
+    console.error(error);
+    process.exit(1);
+}
+);
