@@ -112,25 +112,7 @@
         return members;
     }
 
-    async function getAlternativeMemberCount(orgLogin, installationToken) {
-        console.log(`      🔄 Trying alternative methods to get member information...`);
-        
-        // Try to get member count from organization API
-        try {
-            const orgDetails = await getOrganizationDetails(orgLogin, installationToken);
-            console.log(`      📊 Organization has ${orgDetails.members || 'unknown'} members (from org details)`);
-            
-            // Return empty array but log the count we found
-            if (orgDetails.members) {
-                console.log(`      ℹ️  Cannot list individual members, but organization has ${orgDetails.members} members`);
-            }
-            
-            return []; // Return empty array since we can't get individual members
-        } catch (error) {
-            console.log(`      ❌ Alternative method also failed: ${error.message}`);
-            return [];
-        }
-    }
+
 
     async function getOrganizationDetails(orgLogin, installationToken) {
         const octokit_install = new Octokit({
