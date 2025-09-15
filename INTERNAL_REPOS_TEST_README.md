@@ -1,12 +1,10 @@
 # GitHub App Internal Repository Access Test
 
-This project contains a test script designed to investigate **GitHub Issue #154** from the `githubcustomers/capgemini` repository, which reports that GitHub Apps can access internal repositories even when not explicitly configured to do so.
+This project contains a test script designed to investigate if GitHub Apps can access internal repositories even when not explicitly configured to do so.
 
 ## Issue Summary
 
 **Problem:** A GitHub App configured for specific repositories is showing internal repositories that weren't selected during app configuration. This poses potential security concerns as the app may have unintended access to internal/private repositories.
-
-**Issue Link:** https://github.com/githubcustomers/capgemini/issues/154
 
 ## Test Overview
 
