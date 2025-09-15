@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# GitHub App Internal Repository Access Test Runner
+# This script helps set up and run the internal repository access test
+
+echo "🔍 GitHub App Internal Repository Access Test"
+echo "=============================================="
+echo ""
+
+# Check if we're in the right directory
+if [ ! -f "javascript/list-org-repos.js" ]; then
+    echo "❌ Error: Please run this script from the project root directory"
+    echo "   Expected file 'javascript/list-org-repos.js' not found"
+    exit 1
+fi
+
+# Change to javascript directory
+cd javascript
+
+# Check environment variables
+echo "🔐 Checking environment variables..."
+
+if [ -z "$DEMO_GITHUBAPP_PRIVATE_KEY" ]; then
+    echo "❌ Error: DEMO_GITHUBAPP_PRIVATE_KEY is not set"
+    echo "   Please export your GitHub App private key:"
+    echo "   export DEMO_GITHUBAPP_PRIVATE_KEY=\"-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----\""
+    exit 1
+fi
+
+if [ -z "$DEMO_GITHUBAPP_APPID" ]; then
+    echo "❌ Error: DEMO_GITHUBAPP_APPID is not set"
+    echo "   Please export your GitHub App ID:"
+    echo "   export DEMO_GITHUBAPP_APPID=\"your-app-id\""
+    exit 1
+fi
+
+echo "✅ Environment variables are set"
+
+# Check dependencies
+echo ""
+echo "📦 Checking dependencies..."
+
+if [ ! -d "node_modules" ] || [ ! -f "node_modules/@octokit/auth-app/package.json" ]; then
+    echo "⚠️  Dependencies not found, installing..."
+    npm install
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to install dependencies"
+        exit 1
+    fi
+    echo "✅ Dependencies installed successfully"
+else
+    echo "✅ Dependencies already installed"
+fi
+
+# Run the test
+echo ""
+echo "🚀 Running the GitHub App Internal Repository Access Test..."
+echo "=============================================="
+echo ""
+
+node list-org-repos.js
+
+# Capture exit code
+test_result=$?
+
+echo ""
+echo "=============================================="
+if [ $test_result -eq 0 ]; then
+    echo "✅ Test completed successfully"
+    echo ""
+    echo "📋 Next steps:"
+    echo "   1. Review the test output above for any security issues"
+    echo "   2. Look for 🚨 CRITICAL or ⚠️ WARNING messages"
+    echo "   3. Check the FINAL REPORT section for recommendations"
+    echo "   4. If issues were found, review your GitHub App configuration"
+else
+    echo "❌ Test failed with exit code $test_result"
+    echo ""
+    echo "🔧 Troubleshooting:"
+    echo "   1. Check your environment variables are correct"
+    echo "   2. Verify your GitHub App has necessary permissions"
+    echo "   3. Ensure your GitHub App is installed on at least one organization"
+    echo "   4. Review the error messages above"
+fi
+
+echo ""
+echo "📖 For detailed documentation, see: INTERNAL_REPOS_TEST_README.md"
